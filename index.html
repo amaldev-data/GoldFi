@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoldFi.com</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Full-Screen Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-content">
+            <img src="./Assets/Goldfilogo.png" alt="GoldFi Logo" class="loading-logo" style="width: 150px; height: auto;">
+            <div class="loading-progress-container">
+                <div class="loading-progress-bar" id="loading-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <img src="./Assets/Goldfilogo.png" alt="GoldFi Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="logo-fallback" style="display: none;">
+                    <span class="material-symbols-outlined logo-icon">diamond</span>
+                    <span class="brand-name">GoldFi</span>
+                </div>
+            </div>
+            
+            <div class="nav-center">
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#prediction" class="nav-link">Prediction</a>
+                <a href="#dashboard" class="nav-link">Dashboard</a>
+                <a href="#about" class="nav-link"></a>
+                <a href="#contact" class="nav-link"></a>
+            </div>
+            
+            <div class="nav-right">
+                <button class="btn btn-text">Login</button>
+                <button class="btn btn-primary" onclick="document.getElementById('prediction').scrollIntoView({behavior: 'smooth'})">Get Started</button>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- 1. Hero Section -->
+        <section class="hero-section" id="how-it-works">
+            <div class="hero-background">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+            </div>
+            
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="tagline">
+                        <span class="material-symbols-outlined">auto_awesome</span>
+                        AI Powered Credit Risk Prediction
+                    </div>
+                    <h1 class="hero-title">Smarter Decisions.<br>Safer Gold Loans.</h1>
+                    <p class="hero-description">
+                       The AI-powered risk platform for gold lenders. We help banks and NBFCs predict loan defaults instantly, safeguarding your assets and streamlining your entire lending process.
+                    </p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary btn-large" onclick="document.getElementById('prediction').scrollIntoView({behavior: 'smooth'})">Get Started</button>
+                    </div>
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <span class="material-symbols-outlined icon-gold">check_circle</span>
+                            <span>Accurate Predictions</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="material-symbols-outlined icon-gold">bolt</span>
+                            <span>Faster Decisions</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="material-symbols-outlined icon-gold">shield_locked</span>
+                            <span>Lower Risk</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <img src="./Assets/herosection.png" alt="Hero Illustration" style="width: 100%; height: auto; max-width: 600px; display: block; margin: 0 auto; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));">
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Prediction Section -->
+        <section class="prediction-section" id="prediction">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Predict Credit Risk.<br>Make Smarter Decisions.</h2>
+                    <p class="section-subtitle">Enter applicant details to generate AI-powered risk predictions.</p>
+                </div>
+                
+                <form id="risk-prediction-form" class="prediction-grid">
+                    <!-- Left: Applicant Information (Big Card) -->
+                    <div class="card form-container">
+                        <h3 class="card-title">Applicant Information</h3>
+                        <div class="form-grid">
+                            <div class="input-group">
+                                <label>Full Name</label>
+                                <input type="text" placeholder="e.g. Rahul Sharma" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Age</label>
+                                <input type="number" placeholder="Years" required min="18" max="100">
+                            </div>
+                            <div class="input-group">
+                                <label>Occupation</label>
+                                <select required id="inp-occupation">
+                                    <option value="" disabled selected>Select occupation</option>
+                                    <option value="salaried">Salaried</option>
+                                    <option value="business">Self-Employed / Business</option>
+                                    <option value="professional">Professional</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label>Past Defaults</label>
+                                <select required id="inp-past-defaults">
+                                    <option value="0">No defaults</option>
+                                    <option value="1">Default</option>
+                                    <option value="2">Multiple Defaults</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label>Active Loans</label>
+                                <input type="number" id="inp-active-loans" placeholder="Count" required min="0" value="0">
+                            </div>
+                            <div class="input-group">
+                                <label>CIBIL Score</label>
+                                <input type="number" id="inp-cibil" placeholder="300-900" required min="300" max="900">
+                            </div>
+                            <div class="input-group">
+                                <label>Monthly Income (₹)</label>
+                                <input type="number" id="inp-income" placeholder="Amount" required min="0">
+                            </div>
+                            <div class="input-group">
+                                <label>Employment Experience (Years)</label>
+                                <input type="number" placeholder="Years" required min="0" step="0.5">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Small Cards Container -->
+                    <div class="right-form-column" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <!-- Loan Requirements (Small Card) -->
+                        <div class="card form-container">
+                            <h3 class="card-title">Loan Requirements</h3>
+                            <div class="form-grid">
+                                <div class="input-group">
+                                    <label>Loan Amount (₹)</label>
+                                    <input type="number" id="inp-loan-amount" placeholder="Amount" required min="10000">
+                                </div>
+                                <div class="input-group">
+                                    <label>Loan Tenure (Months)</label>
+                                    <input type="number" id="inp-tenure" placeholder="Months" required min="1" max="120">
+                                </div>
+                                <div class="input-group">
+                                    <label>Interest Rate (%)</label>
+                                    <input type="number" id="inp-interest" placeholder="Annual %" required min="0" step="0.1">
+                                </div>
+                                <div class="input-group">
+                                    <label>Monthly EMI (₹)</label>
+                                    <input type="text" id="inp-emi" placeholder="₹0.00" required readonly class="bg-gray readonly-premium highlight-gold">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gold Collateral Details (Small Card) -->
+                        <div class="card form-container">
+                            <h3 class="card-title m-0">Gold Collateral Details</h3>
+                            <p class="text-sm text-muted mb-md mt-sm">Enter collateral details to estimate live gold valuation.</p>
+                            
+                            <div class="form-grid">
+                                <div class="input-group">
+                                    <label>Gold Weight (grams)</label>
+                                    <input type="number" id="inp-gold-weight" placeholder="Enter gold weight" min="0" step="0.1">
+                                </div>
+                                <div class="input-group">
+                                    <label>Gold Purity (Karat)</label>
+                                    <select id="inp-gold-purity">
+                                        <option value="24">24K</option>
+                                        <option value="22" selected>22K</option>
+                                        <option value="20">20K</option>
+                                        <option value="18">18K</option>
+                                    </select>
+                                </div>
+                                <div class="input-group">
+                                    <div class="info-tooltip-container" style="display: flex; align-items: center; gap: 6px; position: relative;">
+                                        <label style="margin: 0;">Gold Market Price (per gram)</label>
+                                        <span class="material-symbols-outlined info-icon">info</span>
+                                        <div class="premium-tooltip">
+                                            <div class="tooltip-header">
+                                                <span class="material-symbols-outlined text-gold" style="font-size: 16px;">info</span>
+                                                <span style="font-weight: 600; color: var(--text-primary);">Market Price Info</span>
+                                            </div>
+                                            The market price may not always reflect exact live gold rates due to API limitations or technical issues. If the displayed value differs from the actual live market price, you can manually edit the Gold Market Price field.
+                                        </div>
+                                    </div>
+                                    <input type="text" id="inp-gold-price" class="bg-gray readonly-premium" readonly value="Fetching...">
+                                    <div id="gold-status-container" style="display: flex; justify-content: flex-end; margin-top: -4px;">
+                                        <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                                            <div id="gold-status-badge" class="badge-gray shimmer-bg" style="font-size: 0.65rem; padding: 3px 8px; border-radius: 4px; display: flex; align-items: center; gap: 4px; font-weight: 600;">
+                                                <span class="pulse-dot"></span> Loading...
+                                            </div>
+                                            <div id="gold-timestamp" class="timestamp-text" style="display:none; font-size: 0.6rem; color: var(--text-secondary); font-weight: 500; margin-top: 2px;">Updated just now</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label>Gold Value</label>
+                                    <input type="text" id="inp-gold-value" class="bg-gray readonly-premium highlight-gold" readonly placeholder="₹0.00">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions" style="grid-column: 1 / -1; justify-content: center; margin-top: 1rem; padding-top: 0; border-top: none;">
+                        <button type="button" class="btn btn-outline" id="btn-reset">Reset Form</button>
+                        <button type="submit" class="btn btn-primary" id="btn-predict">
+                            <span class="material-symbols-outlined">magic_button</span> Predict Risk
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- 3. Risk Dashboard Section -->
+        <section class="dashboard-section" id="dashboard">
+            <div class="container">
+                <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                    <h2 class="section-title" style="margin: 0; font-size: 2.25rem; font-weight: 700; color: #000;">Dashboard</h2>
+                </div>
+                
+                <div class="dashboard-grid">
+                    <!-- Customer Profile Card -->
+                    <div class="card dashboard-card customer-profile">
+                        <div class="card-header" style="margin-bottom: 0.5rem;">
+                            <h3 class="card-title m-0">Customer Profile</h3>
+                        </div>
+                        <div class="profile-tier" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0;">
+                            <span class="material-symbols-outlined" id="cp-icon" style="font-size: 32px;">military_tech</span>
+                            <div style="display: flex; flex-direction: column;">
+                                <span style="font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">Income Tier</span>
+                                <span id="cp-tier" style="font-size: 1.25rem; font-weight: 700;">--</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- A. Feature Summary Card -->
+                    <div class="card dashboard-card feature-summary">
+                        <div class="card-header">
+                            <h3 class="card-title m-0">Feature Summary</h3>
+                        </div>
+                        <div class="summary-list">
+                            <!-- Items generated via JS, placeholder structure here -->
+                            <div class="summary-row"><div class="s-left"><span class="material-symbols-outlined">work</span>Occupation</div><div class="s-right fw-500" id="fs-occ">Salaried</div></div>
+                            <div class="summary-row"><div class="s-left"><span class="material-symbols-outlined">history</span>Past Defaults</div><div class="s-right fw-500" id="fs-def">0</div></div>
+                            <div class="summary-row"><div class="s-left"><span class="material-symbols-outlined">credit_score</span>CIBIL Score</div><div class="s-right fw-500" id="fs-cibil">0</div></div>
+                            <div class="summary-row"><div class="s-left"><span class="material-symbols-outlined">account_balance</span>Active Loans</div><div class="s-right fw-500" id="fs-act">0</div></div>
+                            <div class="summary-row"><div class="s-left"><span class="material-symbols-outlined">payments</span>Monthly Income</div><div class="s-right fw-500" id="fs-inc">₹0</div></div>
+                            <div class="summary-row"><div class="s-left"><span class="material-symbols-outlined">work_history</span>Employment Yrs</div><div class="s-right fw-500" id="fs-emp">0</div></div>
+                            <div class="summary-row"><div class="s-left"><span class="material-symbols-outlined">monetization_on</span>Loan Amount</div><div class="s-right fw-500" id="fs-loan">₹0</div></div>
+                            <div class="summary-row"><div class="s-left"><span class="material-symbols-outlined">calendar_month</span>Tenure</div><div class="s-right fw-500" id="fs-ten">0 Months</div></div>
+                            <div class="summary-row"><div class="s-left"><span class="material-symbols-outlined">account_balance_wallet</span>Total Repayment</div><div class="s-right fw-500" id="fs-tot-rep">₹0</div></div>
+                        </div>
+                    </div>
+
+                    <!-- Derived Risk Factors Card -->
+                    <div class="card dashboard-card derived-features-container">
+                        <div class="card-header">
+                            <h3 class="card-title m-0">Derived Risk Factors</h3>
+                            <span class="material-symbols-outlined text-muted">insights</span>
+                        </div>
+                        
+                        <div class="derived-list">
+                            <div class="derived-item" id="df-occ-risk">
+                                <div class="derived-icon bg-gray"><span class="material-symbols-outlined">work</span></div>
+                                <div class="derived-info">
+                                    <div class="info-tooltip-container" style="display: flex; align-items: center; gap: 4px; position: relative;">
+                                        <div class="derived-label" style="margin: 0;">Occupation Risk Score</div>
+                                        <span class="material-symbols-outlined info-icon">info</span>
+                                        <div class="premium-tooltip">
+                                            <div class="tooltip-header">
+                                                <span class="material-symbols-outlined text-gold" style="font-size: 16px;">info</span>
+                                                <span style="font-weight: 600; color: var(--text-primary);">Occupation Risk Info</span>
+                                            </div>
+                                            Occupation Risk Score shows the estimated loan risk level of an occupation based on past repayment patterns, income stability, and financial behavior learned from historical customer data.
+                                        </div>
+                                    </div>
+                                    <div class="derived-value">--</div>
+                                </div>
+                                <div class="derived-status badge-gray">Pending</div>
+                            </div>
+                            
+                            <div class="derived-item" id="df-income-emi">
+                                <div class="derived-icon bg-gray"><span class="material-symbols-outlined">balance</span></div>
+                                <div class="derived-info">
+                                    <div class="derived-label">Income To EMI Ratio</div>
+                                    <div class="derived-value">-- x</div>
+                                </div>
+                                <div class="derived-status badge-gray">Pending</div>
+                            </div>
+                            
+                            <div class="derived-item" id="df-ltv">
+                                <div class="derived-icon bg-gray"><span class="material-symbols-outlined">percent</span></div>
+                                <div class="derived-info">
+                                    <div class="derived-label">Loan To Value Ratio</div>
+                                    <div class="derived-value">-- %</div>
+                                </div>
+                                <div class="derived-status badge-gray">Pending</div>
+                            </div>
+                            
+                            <div class="derived-item" id="df-debt-burden">
+                                <div class="derived-icon bg-gray"><span class="material-symbols-outlined">account_balance_wallet</span></div>
+                                <div class="derived-info">
+                                    <div class="derived-label">Total Debt Burden Ratio</div>
+                                    <div class="derived-value">-- %</div>
+                                </div>
+                                <div class="derived-status badge-gray">Pending</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Key Risk Factors Card -->
+                    <div class="card dashboard-card risk-factors">
+                        <div class="card-header">
+                            <h3 class="card-title m-0">Key Risk Factors</h3>
+                        </div>
+                        <div class="factors-list" id="factors-container">
+                            <div class="empty-state">
+                                <span class="material-symbols-outlined empty-icon">insights</span>
+                                <p>Submit a prediction to see risk factors.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- C. Prediction Result Card -->
+                    <div class="card dashboard-card prediction-result">
+                        <div class="card-header">
+                            <h3 class="card-title m-0">Prediction Result</h3>
+                        </div>
+                        
+                        <div class="result-display" id="result-display">
+                            <!-- Gauge Placeholder -->
+                            <div class="gauge-wrapper">
+                                <div class="gauge">
+                                    <div class="gauge-arc"></div>
+                                    <div class="gauge-needle" style="transform: rotate(0deg);"></div>
+                                    <div class="gauge-center">
+                                        <div class="gauge-value">--%</div>
+                                        <div class="gauge-label">Risk</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="risk-alert badge-gray" id="risk-alert">
+                                Awaiting Input
+                            </div>
+                            
+                            <div class="prob-bars">
+                                <div class="prob-bar-container">
+                                    <div class="prob-header">
+                                        <span>No Default</span>
+                                        <span id="prob-no-def">--%</span>
+                                    </div>
+                                    <div class="prob-track">
+                                        <div class="prob-fill bg-green" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                <div class="prob-bar-container mt-sm">
+                                    <div class="prob-header">
+                                        <span>Default</span>
+                                        <span id="prob-def">--%</span>
+                                    </div>
+                                    <div class="prob-track">
+                                        <div class="prob-fill bg-red" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="metadata-grid mt-lg">
+                                <div class="meta-item">
+                                    <span class="meta-label">Loan Status</span>
+                                    <span class="meta-value" id="meta-status">--</span>
+                                </div>
+                                <div class="meta-item">
+                                    <div class="info-tooltip-container" style="display: flex; align-items: center; gap: 4px; position: relative;">
+                                        <span class="meta-label" style="margin: 0;">Risk Engine</span>
+                                        <span class="material-symbols-outlined info-icon">info</span>
+                                        <div class="premium-tooltip">
+                                            <div class="tooltip-header">
+                                                <span class="material-symbols-outlined text-gold" style="font-size: 16px;">info</span>
+                                                <span style="font-weight: 600; color: var(--text-primary);">Risk Engine Info</span>
+                                            </div>
+                                           Powered by <b>GoldFi v2.1</b>, this hybrid risk engine combines AI predictions and policy-based rules to assess loan default risk. Critical risk conditions may override model outputs when necessary.
+                                        </div>
+                                    </div>
+                                    <span class="meta-value" id="meta-conf">--</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Model</span>
+                                    <span class="meta-value">GoldFi v2.1</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">ID</span>
+                                    <span class="meta-value">PRED-<span id="meta-id">---</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="./Assets/Goldfilogo.png" alt="GoldFi Logo" style="height: 36px; object-fit: contain;">
+                </div>
+                <div class="footer-copy">
+                    &copy; 2026 GoldFi Inc. All rights reserved. Premium FinTech Solutions.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
