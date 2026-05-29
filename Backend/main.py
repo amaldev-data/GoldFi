@@ -20,9 +20,20 @@ app.add_middleware(
 MODEL_PATH = os.path.join(os.path.dirname(__file__), 'ML_model.pkl')
 SCALER_PATH = os.path.join(os.path.dirname(__file__), 'scaler.pkl')
 
-ml_model = joblib.load(MODEL_PATH)
-scaler = joblib.load(SCALER_PATH)
+try:
+    ml_model = joblib.load(MODEL_PATH)
+    print("ML Model loaded successfully")
+except Exception as e:
+    print("ML Model Error:", e)
+    raise
 
+try:
+    scaler = joblib.load(SCALER_PATH)
+    print("Scaler loaded successfully")
+except Exception as e:
+    print("Scaler Error:", e)
+    raise
+    
 class PredictionRequest(BaseModel):
     occupation: str
     defaults: int
