@@ -226,6 +226,15 @@ async def predict_risk(data: PredictionRequest):
             "desc": "Total Debt Burden Ratio exceeding 50% indicates severe financial strain and high default risk.",
             "iconClass": "text-red", "badgeClass": "badge-red"
         })
+
+    # 5. Multiple Past Defaults Override
+    if data.defaults >= 2:
+        hybrid_score = max(hybrid_score, 85.0)
+        explainable_factors.insert(0, {
+            "icon": "history_toggle_off", "name": "Multiple Past Defaults", "impact": "Critical Risk",
+            "desc": "A history of multiple past defaults is a strict policy violation, leading to an automatic rejection.",
+            "iconClass": "text-red", "badgeClass": "badge-red"
+        })
         
     # Ensure it's between 0 and 100
     hybrid_score = min(max(hybrid_score, 0), 100)
