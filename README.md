@@ -4,7 +4,7 @@
 
 ##  Overview
 
-**GoldFi** is a state-of-the-art, AI-powered Credit Risk Prediction platform designed specifically for Gold Loan lending. It empowers financial institutions to make smarter, safer, and faster lending decisions by assessing borrower default risk in real-time. 
+**GoldFi**, AI-powered Credit Risk Prediction platform designed specifically for Gold Loan lending. It empowers financial institutions like BAnks and NBFC's to make smarter, safer, and faster lending decisions by assessing borrower default risk in real-time. 
 
 Unlike traditional black-box machine learning models, GoldFi utilizes a **Hybrid Risk Engine** that combines a predictive Machine Learning model (70%) with a strict Policy-Based Risk Control logic (30%). This ensures high prediction accuracy while strictly enforcing critical lending safeguards through automated risk overrides.
 
