@@ -116,7 +116,7 @@ GoldFi is deployed using a modern cloud-based architecture:
 https://amaldev-data.github.io/GoldFi/
 
 **Backend API:**
-https://goldfi-swb8.onrender.com
+https://goldfi-swb8.onrender.com/predict
 
 **API Documentation:**
 https://goldfi-swb8.onrender.com/docs
