@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const response = await fetch('https://goldfi-swb8.onrender.com/predict', {
+            const response = await fetch('http://localhost:8000/predict', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -371,7 +371,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let ltvClass = parseFloat(ltv) > 80 ? 'badge-red' : (parseFloat(ltv) > 65 ? 'badge-orange' : 'badge-green');
         updateDerivedFeature(dfLtv, ltv + ' %', ltvClass);
         
-        let dbClass = parseFloat(totalDebtBurden) < 40 ? 'badge-green' : (parseFloat(totalDebtBurden) < 60 ? 'badge-orange' : 'badge-red');
+        let dbClass = parseFloat(totalDebtBurden) < 40 ? 'badge-green' : (parseFloat(totalDebtBurden) <= 50 ? 'badge-orange' : 'badge-red');
         updateDerivedFeature(dfDebtBurden, totalDebtBurden + ' %', dbClass);
 
         // Customer Profile Tier Logic
