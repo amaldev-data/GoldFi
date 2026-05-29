@@ -20,20 +20,9 @@ app.add_middleware(
 MODEL_PATH = os.path.join(os.path.dirname(__file__), 'ML_model.pkl')
 SCALER_PATH = os.path.join(os.path.dirname(__file__), 'scaler.pkl')
 
-try:
-    ml_model = joblib.load(MODEL_PATH)
-    print("ML Model loaded successfully")
-except Exception as e:
-    print("ML Model Error:", e)
-    raise
+ml_model = joblib.load(MODEL_PATH)
+scaler = joblib.load(SCALER_PATH)
 
-try:
-    scaler = joblib.load(SCALER_PATH)
-    print("Scaler loaded successfully")
-except Exception as e:
-    print("Scaler Error:", e)
-    raise
-    
 class PredictionRequest(BaseModel):
     occupation: str
     defaults: int
@@ -226,6 +215,15 @@ async def predict_risk(data: PredictionRequest):
         explainable_factors.insert(0, {
             "icon": "gavel", "name": "Poor Credit Score", "impact": "Critical Risk",
             "desc": "CIBIL score below 600 represents an unacceptable credit risk, guaranteeing a high risk classification.",
+            "iconClass": "text-red", "badgeClass": "badge-red"
+        })
+        
+    # 4. Excessive Debt Burden Override
+    if total_debt_burden_logic > 50:
+        hybrid_score = max(hybrid_score, 85.0)
+        explainable_factors.insert(0, {
+            "icon": "account_balance_wallet", "name": "Excessive Debt Burden", "impact": "Critical Risk",
+            "desc": "Total Debt Burden Ratio exceeding 50% indicates severe financial strain and high default risk.",
             "iconClass": "text-red", "badgeClass": "badge-red"
         })
         
