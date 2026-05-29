@@ -37,29 +37,43 @@ Unlike traditional black-box machine learning models, GoldFi utilizes a **Hybrid
 ## 📂 Project Structure
 
 ```text
-Gold Loan Project/
+GoldFi/
 │
-├── Backend/                 # FastAPI server and ML models
-│   ├── main.py              # API application and Hybrid Risk Engine logic
-│   ├── ML_model.pkl         # Trained Scikit-Learn model
-│   ├── scaler.pkl           # Trained feature scaler
-│   └── requirements.txt     # Python dependencies for the backend
+├── index.html              # Main application interface
+├── style.css               # Styling and responsive design
+├── script.js               # Frontend logic and API integration
+├── Assets/                 # Images, logos, and illustrations
 │
-├── Frontend/                # User Interface
-│   ├── index.html           # Main application structure
-│   ├── style.css            # Styling, animations, and responsive design
-│   ├── script.js            # Frontend logic and API integration
-│   └── Assets/              # Images, logos, and illustrations
+├── Backend/                # FastAPI backend and ML assets
+│   ├── main.py
+│   ├── ML_model.pkl
+│   ├── scaler.pkl
+│   └── requirements.txt
 │
-├── Notebook/                # Data Science workflows
-│   ├── Goldloan_EDA.ipynb   # Exploratory Data Analysis
-│   ├── Model_training.ipynb # Model training and evaluation
-│   └── gold_loan.csv        # The dataset used for training
+├── Dataset/                # Dataset and raw data files
+├── Notebook/               # EDA and model training notebooks
+├── UI Design/              # UI/UX design assets and mockups
 │
-├── UIUX/                    # Design assets and mockups
-│   └── Presentation1/       # UI/UX screenshots and presentations
-│
-└── Variables.txt            # Data dictionary and risk engine documentation
+├── README.md
+├── Variables.txt
+└── runtime.txt
+```
+
+## 🚀 Live Deployment
+
+### Frontend
+
+GitHub Pages: https://amaldev-data.github.io/GoldFi/
+
+### Backend API
+
+Render: https://goldfi-swb8.onrender.com
+
+### API Documentation
+
+Swagger UI: https://goldfi-swb8.onrender.com/docs
+
+```
 ```
 
 ##  The Hybrid Risk Engine Explained
@@ -104,6 +118,40 @@ The application emphasizes a **Premium FinTech Aesthetic**, utilizing:
 - **Glassmorphism**: Soft, frosted glass effects on cards and tooltips.
 - **Dynamic Micro-interactions**: Pulsing loading states, smooth SVG progress dials, and hover animations.
 - **Visual Hierarchy**: Carefully chosen color palettes (Gold/Bronze primary, sleek grays) to direct user attention efficiently.
+
+##  Deployment
+
+GoldFi is deployed using a modern cloud-based architecture:
+
+* **Frontend:** GitHub Pages (HTML, CSS, JavaScript)
+* **Backend:** Render (FastAPI)
+* **Machine Learning:** Scikit-Learn Logistic Regression
+* **Version Control:** GitHub
+
+### Live Links
+
+**Frontend:**
+https://amaldev-data.github.io/GoldFi/
+
+**Backend API:**
+https://goldfi-swb8.onrender.com
+
+**API Documentation:**
+https://goldfi-swb8.onrender.com/docs
+
+### Deployment Architecture
+
+```text
+GitHub Pages (Frontend)
+          │
+          ▼
+Render FastAPI Backend
+          │
+          ▼
+Hybrid Risk Engine
+(Logistic Regression + Risk Rules)
+```
+
 
 ---
 *Developed by Amaldev K M*
