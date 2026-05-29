@@ -84,7 +84,7 @@ The ML model predicts the probability of default based on historical data. Key f
 Evaluates traditional banking metrics and adds point penalties for:
 * **Poor CIBIL Scores** (< 650 adds +35 risk points)
 * **Past Defaults** (> 0 adds +25 risk points)
-* **High Debt Burden** (> 60% adds +20 risk points)
+* **High Debt Burden** (> 50% adds +20 risk points)
 * **High Loan-to-Value (LTV)** (> 85% adds +15 risk points)
 
 ### 3. Critical Risk Overrides (Safety Net)
