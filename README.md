@@ -58,24 +58,6 @@ GoldFi/
 ├── Variables.txt
 └── runtime.txt
 ```
-
-## 🚀 Live Deployment
-
-### Frontend
-
-GitHub Pages: https://amaldev-data.github.io/GoldFi/
-
-### Backend API
-
-Render: https://goldfi-swb8.onrender.com
-
-### API Documentation
-
-Swagger UI: https://goldfi-swb8.onrender.com/docs
-
-```
-```
-
 ##  The Hybrid Risk Engine Explained
 
 The core of GoldFi is its Hybrid Risk Engine, which calculates the final risk score using the following formula:
