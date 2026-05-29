@@ -2,13 +2,13 @@
 
 ![GoldFi Hero](https://raw.githubusercontent.com/amaldev-data/GoldFi/main/UI%20Design/Hero%20.PNG)
 
-## 📌 Overview
+##  Overview
 
 **GoldFi** is a state-of-the-art, AI-powered Credit Risk Prediction platform designed specifically for Gold Loan lending. It empowers financial institutions to make smarter, safer, and faster lending decisions by assessing borrower default risk in real-time. 
 
 Unlike traditional black-box machine learning models, GoldFi utilizes a **Hybrid Risk Engine** that combines a predictive Machine Learning model (70%) with a strict Policy-Based Risk Control logic (30%). This ensures high prediction accuracy while strictly enforcing critical lending safeguards through automated risk overrides.
 
-## ✨ Key Features
+##  Key Features
 
 - **Hybrid Risk Engine**: Blends Machine Learning probabilities with hard-coded financial logic to ensure safe lending practices.
 - **Explainable AI (XAI)**: Generates human-readable insights explaining *why* a specific risk score was given (e.g., "High LTV", "Income Deficit", "Poor Credit Score").
@@ -16,7 +16,7 @@ Unlike traditional black-box machine learning models, GoldFi utilizes a **Hybrid
 - **Critical Risk Overrides**: Automatically flags applications as "High Risk" if strict business rules are violated (e.g., EMI strictly exceeds monthly income, under-collateralized loans).
 - **Live Gold Valuation Simulation**: Estimates collateral value instantly based on inputted gold weight and purity.
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ### Frontend
 * **HTML5 / CSS3**: Custom vanilla CSS for a highly performant, tailored, and premium aesthetic without the overhead of heavy frameworks.
@@ -62,7 +62,7 @@ Gold Loan Project/
 └── Variables.txt            # Data dictionary and risk engine documentation
 ```
 
-## 🧠 The Hybrid Risk Engine Explained
+##  The Hybrid Risk Engine Explained
 
 The core of GoldFi is its Hybrid Risk Engine, which calculates the final risk score using the following formula:
 
@@ -98,7 +98,7 @@ Regardless of the 70/30 split, if a borrower triggers any of the following, thei
 * **Severe Bad Credit**: CIBIL score is below 600.
 
 
-## 🎨 UI/UX Design
+##  UI/UX Design
 
 The application emphasizes a **Premium FinTech Aesthetic**, utilizing:
 - **Glassmorphism**: Soft, frosted glass effects on cards and tooltips.
