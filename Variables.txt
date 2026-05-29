@@ -1,0 +1,41 @@
+Name 
+Age
+occupation_encode
+past_defaults	
+active_loans	
+interest_rate_pct	
+cibil_score	
+monthly_income	
+emp_years	
+loan_amount_inr	
+tenure_months
+loan amount 
+loan tenure (month)
+interest rate (%)
+monthly EMI
+
+occupation_encoded
+emi_inr
+income_to_emi
+ltv_ratio
+total_debt_burden 
+
+
+
+
+
+Based on the analysis of your backend API code in 
+main.py
+, both the ML model prediction and the logic-based prediction are working together simultaneously. The system uses a "Hybrid Risk Score" approach.
+
+Here is the exact percentage breakdown used to calculate the final base score:
+
+ML Model Prediction: 70% weight
+Logic-Based Prediction: 30% weight
+The formula used in the code is: hybrid_score = (ml_score * 0.7) + (logical_risk_score * 0.3)
+
+Important Note on Logic Overrides: While the base score is an exact 70/30 split, the logic-based engine has "Critical Risk Overrides" that can completely bypass the ML model. If a user meets any of the following severe logical criteria, the system ignores the 70/30 split and immediately forces the score to 85.0 (High Risk):
+
+Income Deficit: The monthly EMI strictly exceeds their monthly income.
+Under-collateralized: The requested loan amount is higher than the value of the gold.
+Poor Credit Score: Their CIBIL score is below 600.
