@@ -1,6 +1,6 @@
 # GoldFi - AI-Powered Gold Loan Credit Risk Prediction
 
-![GoldFi Hero](GoldFi/UI%20Design/Hero%20.PNG)
+<img src="GoldFi/UI Design/Hero .PNG" alt="GoldFi Hero" width="600" />
 
 ## 📌 Overview
 
