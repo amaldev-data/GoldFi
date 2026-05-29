@@ -28,7 +28,7 @@ Unlike traditional black-box machine learning models, GoldFi utilizes a **Hybrid
 * **Pydantic**: Data validation and settings management using Python type annotations.
 
 ### Machine Learning & Data Science
-* **Scikit-Learn**: Used for data preprocessing, feature scaling (StandardScaler), model training, and evaluation. The final production model is Logistic Regression, selected based on its superior performance with a ROC-AUC score of 95.18%.
+* **Scikit-Learn**: Used for data preprocessing, feature scaling (StandardScaler), model training, and evaluation. The final production model is **Logistic Regression**, selected based on its superior performance with a ROC-AUC score of **95.18%**.
 * **XGBoost**: Evaluated as an alternative ensemble model, achieving a ROC-AUC score of 95.09%. While performance was comparable, Logistic Regression was chosen due to its slightly higher predictive accuracy, interpretability, and deployment simplicity.
 * **Pandas & NumPy**: Used for data cleaning, transformation, exploratory data analysis (EDA), and feature engineering.
 * **Joblib**: Used to serialize and persist trained machine learning assets, including the production model (ML_model.pkl) and feature scaler (scaler.pkl).
@@ -106,4 +106,4 @@ The application emphasizes a **Premium FinTech Aesthetic**, utilizing:
 - **Visual Hierarchy**: Carefully chosen color palettes (Gold/Bronze primary, sleek grays) to direct user attention efficiently.
 
 ---
-*Developed for GoldFi Inc.*
+*Developed by Amaldev K M*
