@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const response = await fetch('https://goldfi-swb8.onrender.com/predict', {
+            const response = await fetch('http://localhost:8000/predict', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -543,7 +543,7 @@ document.addEventListener('DOMContentLoaded', () => {
             activeLoans: parseInt(document.getElementById('inp-active-loans').value),
             cibil: parseInt(document.getElementById('inp-cibil').value),
             income: parseFloat(document.getElementById('inp-income').value),
-            exp: parseFloat(document.querySelector('input[placeholder="Years"]').value),
+            exp: parseFloat(document.getElementById('inp-exp').value),
             loanAmount: parseFloat(inpLoanAmount.value),
             tenure: parseInt(inpTenure.value),
             interest: parseFloat(inpInterest.value),
