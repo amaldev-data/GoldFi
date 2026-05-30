@@ -39,20 +39,20 @@ Unlike traditional black-box machine learning models, GoldFi utilizes a **Hybrid
 ```text
 GoldFi/
 │
-├── index.html              # Main application interface
-├── style.css               # Styling and responsive design
-├── script.js               # Frontend logic and API integration
-├── Assets/                 # Images, logos, and illustrations
+├── index.html            
+├── style.css             
+├── script.js              
+├── Assets/               
 │
-├── Backend/                # FastAPI backend and ML assets
+├── Backend/             
 │   ├── main.py
 │   ├── ML_model.pkl
 │   ├── scaler.pkl
 │   └── requirements.txt
 │
-├── Dataset/                # Dataset and raw data files
-├── Notebook/               # EDA and model training notebooks
-├── UI Design/              # UI/UX design assets and mockups
+├── Dataset/               
+├── Notebook/            
+├── UI Design/             
 │
 ├── README.md
 ├── Variables.txt
