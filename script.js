@@ -297,18 +297,44 @@ document.addEventListener('DOMContentLoaded', () => {
         // Show full-screen loading overlay
         const overlay = document.getElementById('loading-overlay');
         const progressBar = document.getElementById('loading-bar-fill');
+        const predictBtn = document.getElementById('btn-predict');
+        
+        if (predictBtn) predictBtn.disabled = true;
+        
+        // Ensure status text element exists to inform user of cold starts
+        let statusText = document.getElementById('loading-status-text');
+        if (!statusText && overlay) {
+            statusText = document.createElement('div');
+            statusText.id = 'loading-status-text';
+            statusText.style.color = 'var(--text-secondary)';
+            statusText.style.fontSize = '0.85rem';
+            statusText.style.marginTop = '15px';
+            statusText.style.textAlign = 'center';
+            statusText.style.fontWeight = '500';
+            const progressContainer = document.querySelector('.loading-progress-container');
+            if (progressContainer) progressContainer.parentNode.insertBefore(statusText, progressContainer.nextSibling);
+        }
+        if (statusText) statusText.textContent = 'Connecting to risk engine...';
+
+        let interval;
+        let slowRequestTimeout;
         
         if (overlay) {
             overlay.classList.remove('hidden');
             if (progressBar) {
                 progressBar.style.width = '0%';
                 let progress = 0;
-                const interval = setInterval(() => {
+                interval = setInterval(() => {
                     progress += 2;
                     progressBar.style.width = progress + '%';
                     if (progress >= 95) clearInterval(interval);
                 }, 30);
             }
+            
+            // Inform user if request takes more than 4 seconds (Render cold start)
+            slowRequestTimeout = setTimeout(() => {
+                if (statusText) statusText.innerHTML = 'Waking up secure server...<br><span style="font-size: 0.75rem; font-weight: 400;">(This may take up to 50 seconds on the first request)</span>';
+            }, 4000);
         }
 
         try {
@@ -326,17 +352,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const backendData = await response.json();
             
+            if (interval) clearInterval(interval);
+            if (slowRequestTimeout) clearTimeout(slowRequestTimeout);
+            if (statusText) statusText.textContent = 'Processing results...';
             if (progressBar) progressBar.style.width = '100%';
             
             setTimeout(() => {
-                processPrediction(data, backendData);
-                if (overlay) overlay.classList.add('hidden');
-                document.getElementById('dashboard').scrollIntoView({ behavior: 'smooth' });
+                try {
+                    processPrediction(data, backendData);
+                } catch (err) {
+                    console.error('Error processing prediction data:', err);
+                    alert('An error occurred while processing the prediction data.');
+                } finally {
+                    if (overlay) overlay.classList.add('hidden');
+                    if (predictBtn) predictBtn.disabled = false;
+                    document.getElementById('dashboard').scrollIntoView({ behavior: 'smooth' });
+                }
             }, 500); // short delay to show 100%
 
         } catch (error) {
             console.error('Prediction failed:', error);
+            if (interval) clearInterval(interval);
+            if (slowRequestTimeout) clearTimeout(slowRequestTimeout);
             if (overlay) overlay.classList.add('hidden');
+            if (predictBtn) predictBtn.disabled = false;
             alert('Failed to connect to the prediction server. Ensure the backend is running.');
         }
     };
